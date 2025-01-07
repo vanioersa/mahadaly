@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Landing Page</title>
+	<title>Home Page</title>
+	<link rel="icon" href="https://is3.cloudhost.id/alfa/pondok/public/logo.png" type="image/png">
 	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 	<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 	<script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
@@ -11,31 +12,19 @@
 	<link rel="stylesheet" href="css/skilline.css" />
 	<link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			fetch('navbar.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('navbar-placeholder').innerHTML = data;
+				});
+		});
+	</script>
 </head>
 <body class="antialiased">
-	<div x-data="{ open: false }" style="background-color: #0AD1C8;" class="w-full text-gray-700">
-        <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
-            <div class="flex flex-row items-center justify-between py-6">
-                <div class="relative md:mt-8">
-                    <a href="#" class="text-lg relative z-50 font-bold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline">Ponpes Al Musyaffa</a>
-					<img class="h-12 z-40 absolute -top-2 -left-3" src="https://is3.cloudhost.id/alfa/pondok/public/logo.png" alt="">
-                </div>
-                <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
-                    <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-                        <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                        <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </div>
-            <nav :class="{ 'transform md:transform-none': !open, 'h-full': open }" class="h-0 md:h-auto flex flex-col flex-grow md:items-center pb-4 md:pb-0 md:flex md:justify-end md:flex-row origin-top duration-300 scale-y-0">
-                <a class="px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-8 md:ml-4 hover:text-gray-900 focus:outline-none focus:shadow-outline" href="#">Home</a>
-                <a class="px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-8 md:ml-4 hover:text-gray-900 focus:outline-none focus:shadow-outline" href="#">Careers</a>
-                <a class="px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-8 md:ml-4 hover:text-gray-900 focus:outline-none focus:shadow-outline" href="#">Blog</a>
-                <a class="px-4 py-2 mt-2 text-sm bg-transparent rounded-lg md:mt-8 md:ml-4 hover:text-gray-900 focus:outline-none focus:shadow-outline" href="#">About Us</a>
-                <a class="px-10 py-3 mt-2 text-sm text-center bg-white text-gray-800 rounded-full md:mt-8 md:ml-4" href="#">Login</a>
-            </nav>
-        </div>
-    </div>
+	<div id="navbar-placeholder"></div>
+	
 	<div style="background-color: #0AD1C8;">
 		<div class="max-w-screen-xl px-8 mx-auto flex flex-col lg:flex-row items-start">
 			<div class="flex flex-col w-full lg:w-6/12 justify-center lg:pt-24 items-start text-center lg:text-left mb-5 md:mb-0">
@@ -58,7 +47,7 @@
 				</div>
 			</div>
 			<div class="w-full lg:w-6/12 lg:-mt-10 relative" id="girl">
-				<img data-aos="fade-up" data-aos-once="true" class="foto_pak w-10/12 mx-auto 3xl:-mb-20" src="https://is3.cloudhost.id/alfa/pondok/public/pak_kyai.png" />
+				<img data-aos="fade-up" data-aos-once="true" class="foto_pak mx-auto 3xl:-mb-20" src="https://is3.cloudhost.id/alfa/pondok/public/pak_kyai.png" />
 				<div data-aos="fade-up" data-aos-delay="300" data-aos-once="true" class="absolute top-20 -left-6 sm:top-32 sm:left-10 md:top-40 md:left-16 lg:-left-0 lg:top-52 floating-4">
 					<img class="bg-white bg-opacity-80 rounded-lg h-12 sm:h-16" src="https://is3.cloudhost.id/alfa/pondok/public/calendar.svg">
 				</div>
@@ -82,7 +71,7 @@
 	</div>
 
 	<div class="container px-4 lg:px-8 mx-auto max-w-screen-xl text-gray-700 overflow-x-hidden">
-		<div data-aos="flip-up" class="max-w-xl mx-auto text-center mt-24">
+		<div data-aos="flip-up" class="max-w-xl mx-auto text-center">
 			<h1 class="font-bold text-darken my-3 text-2xl">All-In-One <span class="text-yellow-500">Cloud Software.</span></h1>
 			<p class="leading-relaxed text-gray-500">Skilline is one powerful online software suite that combines all the tools needed to run a successful school or office.</p>
 		</div>
@@ -297,7 +286,7 @@
 		<div class="max-w-lg mx-auto">
 			<div class="flex py-12 justify-center text-white items-center px-20 sm:px-36">
 				<div class="relative">
-					<h1 class="font-bold text-lg pr-5 relative z-50">Ponpes Al Musyaffa</h1>
+					<h1 class="font-bold text-xl pr-5 relative z-50">MA’HAD ALY AL MUSYAFFA</h1>
 					<img class="w-12 h-12 absolute -top-2 -left-3 z-40" src="https://is3.cloudhost.id/alfa/pondok/public/logo.png" alt="">
 				</div>
 				<span class="border-l border-gray-500 text-sm pl-5 py-2 font-semibold">Virtual Class for Zoom</span>

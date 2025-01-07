@@ -1,0 +1,90 @@
+<!-- navbar.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+	<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+	<script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <div x-data="{ open: false, activeMenu: null }" style="background-color: #0AD1C8;" class="w-full text-gray-700">
+        <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
+            <div class="flex flex-row items-center justify-between py-6">
+                <div class="flex items-center space-x-2 md:mt-8">
+                    <img class="h-12" src="https://is3.cloudhost.id/alfa/pondok/public/logo.png" alt="Logo">
+                    <a href="/" class="text-lg relative z-50 font-bold tracking-widest text-gray-900 rounded-lg focus:outline-none focus:shadow-outline">
+                        MA’HAD ALY AL MUSYAFFA
+                    </a>
+                </div>
+                <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
+                    <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                        <path x-show="!open" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zM3 10h14a1 1 0 010 2H3a1 1 0 010-2zM3 15h14a1 1 0 010 2H3a1 1 0 010-2z"></path>
+                        <path x-show="open" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"></path>
+                    </svg>
+                </button>
+            </div>
+    
+            <nav :class="{ 'block': open, 'hidden': !open }" class="hidden md:flex md:flex-row md:items-center">
+                <a href="/landingpage.html" class="px-4 py-2 text-sm bg-transparent hover:text-gray-900 focus:outline-none">
+                    Home
+                </a>
+                <div class="relative group">
+                    <button @click="activeMenu = activeMenu === 'profile' ? null : 'profile'" class="px-4 py-2 text-sm bg-transparent hover:text-gray-900 focus:outline-none">
+                        Profile &#9662;
+                    </button>
+                    <div x-show="activeMenu === 'profile'" @click.away="activeMenu = null" class="absolute left-0 mt-2 bg-white shadow-lg rounded-md w-48 z-50">
+                        <a href="/profile/sejarah.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Sejarah</a>
+                        <a href="/profile/profile-mudir.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Profile Mudir</a>
+                        <a href="/profile/profile-waka-mudir.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Profile Waka Mudir</a>
+                        <a href="/profile/profile-dosen.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Profile Dosen</a>
+                        <a href="/profile/visi-misi.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Visi dan Misi</a>
+                        <a href="/profile/struktural.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Struktural</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button @click="activeMenu = activeMenu === 'berita' ? null : 'berita'" class="px-4 py-2 text-sm bg-transparent hover:text-gray-900 focus:outline-none">
+                        Berita &#9662;
+                    </button>
+                    <div x-show="activeMenu === 'berita'" @click.away="activeMenu = null" class="absolute left-0 mt-2 bg-white shadow-lg rounded-md w-48 z-50">
+                        <a href="/berita/1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Default 1</a>
+                        <a href="/berita/2" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Default 2</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button @click="activeMenu = activeMenu === 'akademik' ? null : 'akademik'" class="px-4 py-2 text-sm bg-transparent hover:text-gray-900 focus:outline-none">
+                        Akademik &#9662;
+                    </button>
+                    <div x-show="activeMenu === 'akademik'" @click.away="activeMenu = null" class="absolute left-0 mt-2 bg-white shadow-lg rounded-md w-48 z-50">
+                        <a href="/akademik/1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Default 1</a>
+                        <a href="/akademik/2" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Default 2</a>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button @click="activeMenu = activeMenu === 'infoPMB' ? null : 'infoPMB'" class="px-4 py-2 text-sm bg-transparent hover:text-gray-900 focus:outline-none">
+                        Info PMB &#9662;
+                    </button>
+                    <div x-show="activeMenu === 'infoPMB'" @click.away="activeMenu = null" class="absolute left-0 mt-2 bg-white shadow-lg rounded-md w-48 z-50">
+                        <a href="/info-pmb/1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Default 1</a>
+                        <a href="/info-pmb/2" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Default 2</a>
+                    </div>
+                </div>
+                <a href="/login" class="px-10 py-3 mt-2 text-sm bg-white text-gray-800 rounded-full">
+                    Login
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

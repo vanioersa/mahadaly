@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Organisasi</title>
+	<link rel="stylesheet" href="/css/struktural.css" />
+    <link rel="icon" href="https://is3.cloudhost.id/alfa/pondok/public/logo.png" type="image/png">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                });
+        });
+    </script>
+    <style>
+        .tree-node {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .tree-node .title {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            background-color: #0AD1C8;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tree-node .details {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            margin-bottom: 30px;
+        }
+
+        .branch {
+            display: flex;
+            justify-content: space-evenly;
+            position: relative;
+            margin-top: 20px;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .branch::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: #0AD1C8;
+            transform: translateX(-50%);
+        }
+
+        .branch > .tree-node:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 2px;
+            background-color: #0AD1C8;
+            transform: translateX(-50%);
+        }
+
+        .tree-node:not(:first-child)::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: #0AD1C8;
+            transform: translateX(-50%);
+        }
+
+        .tree-node .branch .tree-node {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Membuat akar lebih terarah mengikuti posisi kotak */
+        .branch > .tree-node {
+            position: relative;
+        }
+
+        .branch > .tree-node:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background-color: #0AD1C8;
+            transform: translateX(-50%);
+        }
+
+        .branch > .tree-node .branch::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: #0AD1C8;
+            transform: translateX(-50%);
+        }
+
+        /* Menambahkan akar yang sedikit turun ke bawah untuk mengarah ke kotak */
+        .branch > .tree-node .branch {
+            margin-top: 10px;
+        }
+
+        .branch > .tree-node .branch > .tree-node::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 2px;
+            height: 30px;
+            background-color: #0AD1C8;
+            transform: translateX(-50%);
+        }
+
+        /* Menambahkan efek animasi */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .tree-node {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>        
+</head>
+<body class="antialiased">
+    <div id="navbar-placeholder"></div>
+
+    <div class="relative bg-cover bg-center" style="background-image: url('/assets/header-image.jpg');">
+        <div class="max-w-screen inset-0 bg-black bg-opacity-50 flex items-center justify-center py-20 lg:py-32">
+            <h1 data-aos="fade-right" data-aos-once="true" 
+                class="text-white text-4xl my-6 md:text-4xl lg:text-5xl font-bold leading-tight text-center px-4">
+                <span class="text-yellow-500 block mb-2">Struktur Organisasi MA'HAD ALY AL MUSYAFFA</span>
+                Periode Tahun 2021-2026 M
+            </h1>
+        </div>
+        
+        <div class="text-white inset-0 bg-black bg-opacity-50 z-40 relative">
+            <svg class="xl:h-40 xl:w-full" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z" fill="currentColor"></path>
+            </svg>
+            <div class="bg-white w-full h-10 -mt-px"></div>
+        </div>
+    </div>
+    
+    <div class="text-center">
+        <div class="tree-node">
+            <div class="title text-white shadow-lg">Senat</div>
+            <div class="details">
+                KH. Muchlis Musyaffa' <br>
+                Drs. KH. Asro'ie, M.Pd.I. <br>
+                Dr. KH. Syamsul Huda, M.Pd.I.
+            </div>
+            <div class="branch">
+                <div class="tree-node">
+                    <div class="title text-white shadow-lg">Mudir</div>
+                    <div class="details">Dr. KH. Syamsul Huda, M.Pd.I.</div>
+                    <div class="branch">
+                        <div class="tree-node">
+                            <div class="title text-white shadow-lg">Waka Bid. Akademik</div>
+                            <div class="details">Agus Azhar Faiq, S.Ag. M.Pd.</div>
+                        </div>
+                        <div class="tree-node">
+                            <div class="title text-white shadow-lg">Waka Bid. Administrasi</div>
+                            <div class="details">Agus H. M. Sarikhul Huda, S.E., M.H.</div>
+                        </div>
+                    </div>
+                    <div class="branch">
+                        <div class="tree-node">
+                            <div class="title text-white shadow-lg">Dewan Masyayikh</div>
+                            <div class="details">
+                                KH. Muchlis Musyaffa' <br>
+                                Drs. KH. Asro'ie, M.Pd.I. <br>
+                                KH. M Muthohar <br>
+                                KH. Khumaidi <br>
+                                KH. M Zaenul Musthofa
+                            </div>
+                            <div class="branch">
+                                <div class="tree-node">
+                                    <div class="title text-white shadow-lg">Lembaga Pengembangan Ilmu</div>
+                                    <div class="details">
+                                        Agus Akhmad Rifqi Maola <br>
+                                        Agus Moh Abdul Wahab <br>
+                                        Agus M. Hilmi Matin <br>
+                                        Ky. Nuril Izza Muzakky, Lc., M.Ag.
+                                    </div>
+                                    <div class="branch">
+                                        <div class="tree-node">
+                                            <div class="title text-white shadow-lg">Kepala Bag. UPT</div>
+                                            <div class="branch">
+                                                <div class="tree-node">
+                                                    <div class="title text-white shadow-lg">Bidang Laboratorium</div>
+                                                    <div class="details">Ust. Hariyadin, M.Pd.</div>
+                                                </div>
+                                                <div class="tree-node">
+                                                    <div class="title text-white shadow-lg">Bidang Perpustakaan</div>
+                                                    <div class="details">Ust. Mustofa, M.H.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+    </script>
+</body>
+</html>
